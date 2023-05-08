@@ -1,4 +1,5 @@
 build:	## Compile source code of the application to a binary
+	make lint
 	go build
 
 run:	## Run the application in background by executing the binary and write log into a file
