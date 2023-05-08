@@ -9,8 +9,8 @@ stop:	## Stop the application with the command pkill
 	pkill awesome-api
 
 clean:	## Stop the application and Delete the binary and log file
-	make stop
-	rm awesome-api awesome-api.log
+	pkill awesome-api
+	rm -f awesome-api awesome-api.log
 
 test:	## Test it to ensure that it behaves as expected
 	curl http://localhost:9999
