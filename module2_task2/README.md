@@ -12,5 +12,5 @@
     * stop:    Stop the application with the command pkill
     * clean:   Delete the binary and log file
     * test:    Test it to ensure that it behaves as expected
-    * unit-test:    execute (successfully) the Golang unit tests
+    * unit-tests:    execute (successfully) the Golang unit tests
     * help:    Show this help.
