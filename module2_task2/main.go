@@ -25,8 +25,8 @@ func setupRouter() *mux.Router {
   // Create a new empty HTTP Router
   r := mux.NewRouter()
 
-  // Start an HTTP server using the custom router
-  log.Fatal(http.ListenAndServe(httpAddr, setupRouter()))
+  // When an HTTP GET request is received on the path /health, delegates to the function "HealthCheckHandler() "
+  r.HandleFunc("/health", HealthCheckHandler).Methods("GET")
 
   // when an HTTP GET request is received on the path /hello
   r.HandleFunc("/hello", HelloHandler).Methods("GET")
