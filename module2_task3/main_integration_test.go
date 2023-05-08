@@ -39,9 +39,9 @@ func Test_server(t *testing.T) {
     },
     {
       name:         "Hello",
-      URI:          "/hello?name=World",
+      URI:          "/hello?name=%s",
       responseCode: 200,
-      body:         "Hello World!",
+      body:         "Hello there!",
     },
   }
 
