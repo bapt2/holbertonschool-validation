@@ -31,11 +31,18 @@ func Test_server(t *testing.T) {
       responseCode: 200,
       body:         "Hello Holberton!",
     },
+    {
+      name:         "Health",
+      URI:          "/health?name=Alive",
+      responseCode: 200,
+      body:         "ALIVE",
+    },
   }
 
   for _, tt := range tests {
     t.Run(tt.name, func(t *testing.T) {
       ts := httptest.NewServer(setupRouter())
+
       defer ts.Close()
 
       res, err := http.Get(ts.URL + tt.URI)
