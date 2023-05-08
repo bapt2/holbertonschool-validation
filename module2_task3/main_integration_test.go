@@ -38,8 +38,8 @@ func Test_server(t *testing.T) {
       body:         "ALIVE",
     },
     {
-      name:         "Hello",
-      URI:          "/hello?name=%s",
+      name:         "There",
+      URI:          "/hello?name=there",
       responseCode: 200,
       body:         "Hello there!",
     },
