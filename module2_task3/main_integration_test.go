@@ -38,12 +38,6 @@ func Test_server(t *testing.T) {
       ts := httptest.NewServer(setupRouter())
       defer ts.Close()
 
-	  ts := httptest.NewServer(HealthCheckHandler())
-      defer ts.Close()
-
-	  ts := httptest.NewServer(HelloHandler())
-      defer ts.Close()
-
       res, err := http.Get(ts.URL + tt.URI)
       if err != nil {
         t.Fatal(err)
