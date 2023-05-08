@@ -5,12 +5,11 @@ run:	## Run the application in background by executing the binary and write log
 	./awesome-api >./awesome-api.log 2>&1 &
 
 stop:	## Stop the application with the command pkill
-	pkill awesome-api || true
+	pkill awesome-api
 
-clean:	## Delete the binary and log file
-	rm -rf awesome-api 
-	rm -rf awesome-api.log
-	rm go.sum
+clean:	## Stop the application and Delete the binary and log file
+	pkill awesome-api
+	rm awesome-api awesome-api.log
 
 test:	## Test it to ensure that it behaves as expected
 	curl http://localhost:9999
