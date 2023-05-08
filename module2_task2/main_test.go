@@ -37,7 +37,17 @@ func Test_HelloHandler(t *testing.T) {
       responseCode: 400,
       body:         "",
     },
-
+    {
+      name:         "No querystring",
+      queryString:  "",
+      responseCode: 200,
+      body:         "Hello there!",
+    },
+    {
+      name:         "More names",
+      queryString:  "name=Foo&Name=Bar",
+      responseCode: 200,
+      body:         "Hello Foo!",
 
   }
   for _, tt := range tests {
