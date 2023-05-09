@@ -14,7 +14,7 @@ check:	## Succeed by default, and fail when presented with a dead link or a badl
 	markdownlint README.md content/posts/*.md
 	markdown-link-check README.md content/posts/*.md
 
-validate:	## Always succeed by default and should print the result on the stdout
+validate:	## Always succeed by default and should print the result on the stdout 
 	python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html
 
 help:	## Show this help.
