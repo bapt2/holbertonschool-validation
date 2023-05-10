@@ -2,8 +2,8 @@ build:	## Generate the website from the markdown and configuration files in the 
 	golangci-lint run
 	markdownlint README.md content/posts/*
 	markdown-link-check README.md content/posts/*
-	hugo
 	go build
+	hugo
 
 run:	## Run the application in background by executing the binary and write log into a file
 	./awesome-api >./awesome-api.log 2>&1 &
