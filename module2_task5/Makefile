@@ -7,6 +7,8 @@ build:	## Generate the website from the markdown and configuration files in the 
 
 run:	## Run the application in background by executing the binary and write log into a file
 	./awesome-api >./awesome-api.log 2>&1 &
+	nohup hugo server -D --bind=localhost --port=9999 &
+
 
 stop:	## Stop the application with the command pkill
 	pkill awesome-api || true
