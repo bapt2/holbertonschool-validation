@@ -1,0 +1,11 @@
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-22.04
+    steps:
+      - run: git clone https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+      - run: echo "theme = 'ananke'" >> config.toml
+      - run: rm -rf .gitmodules .git
+      - run: cd ../../module1_task4
+      - run: make help
+      - run: hugo server
