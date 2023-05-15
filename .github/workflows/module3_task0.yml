@@ -1,12 +1,20 @@
-name: module3 task0
-on: [push]
+name: module3_task0
+# Events that trigger workflows
+on:  # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+
 jobs:
-  Explore-GitHub-Actions:
+  build:
+
     runs-on: ubuntu-22.04
+
     steps:
-      - run: git clone https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
-      - run: echo "theme = 'ananke'" >> config.toml
-      - run: rm -rf .gitmodules .git
-      - run: cd ../../module1_task4
-      - run: make help
-      - run: hugo server
+      - name: "Checkout"  # Download code from the repository
+        uses: actions/checkout@v3
+
+      - name: "Run make help"  # Execute the command make help
+        run: cd module3_task0 && make help
