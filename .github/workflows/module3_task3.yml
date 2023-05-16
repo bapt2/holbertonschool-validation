@@ -1,5 +1,5 @@
 ---
-name: module3_task2
+name: module3_task3
 # Events that trigger workflows
 on:  # yamllint disable-line rule:truthy
   push:
@@ -38,8 +38,7 @@ jobs:
           TOKEN: ${{ secrets.TOKEN }}
         uses: softprops/action-gh-release@v1
         with:
-          tags: 
-            - 1.0.0
+          tag_name: 1.0.0
           files: |
             module3_task3/awesome-website.zip
             module3_task3/DEPLOY.md
