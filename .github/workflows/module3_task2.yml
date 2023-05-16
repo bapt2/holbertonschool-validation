@@ -17,8 +17,18 @@ jobs:
       - name: "Run file sh"
         run: cd module3_task2 && ./setup.sh
 
-      - name: "Run make package" # Execute the command make package
-        run: cd module3_task2 && make package
-
       - name: "Run make build"  # Execute the command make build
         run: cd module3_task2 && make build
+
+      - name: "Run make package" # Execute the command make package
+        run: |
+        cd module3_task2
+        make test
+        make package
+        make clean
+
+      - name: "Archive a zip file"
+        run: actions/upload-artifact@v3
+        with:
+          name: awesome-website.zip
+          path: module3_task2/awesome-website.zip

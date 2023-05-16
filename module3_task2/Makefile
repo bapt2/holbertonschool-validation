@@ -24,7 +24,7 @@ clean:	## Stop the application. Delete the binary and the log file.
 	@if pgrep -x $(TARGET) > /dev/null; then \
 		pkill $(TARGET); \
 	fi
-	@$(RM) $(TARGET) $(TARGET).log $(COVERAGE)-units.out $(COVERAGE)-integrations.out dist/ *~
+	@$(RM) $(TARGET) $(TARGET).log $(COVERAGE)-units.out $(COVERAGE)-integrations.out dist/ *~ awesome-website.zip
 
 test:	## Test the application.
 	$(MAKE) unit-tests
@@ -47,6 +47,9 @@ check:	## Lint markdonw source, check dead links
 
 validate:	## Validate the file dist/index.html using the command line Holberton’s W3C Validator.
 	python3 /opt/W3C-Validator/w3c_validator.py ./dist/index.html || true
+
+package:	## It should create a file named awesome-website.zip
+	zip awesome-website.zip awesome-api dist/
 
 help:	## Show this help usage.
 	@sed -ne '/@sed/!s/## //p' $(MAKEFILE_LIST)
