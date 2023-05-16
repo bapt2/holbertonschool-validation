@@ -6,9 +6,12 @@ HUGO_BINARY="hugo_extended_${HUGO_VERSION}_Linux-64bit.deb"
 curl -LO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}"
 sudo dpkg -i ${HUGO_BINARY}
 rm ${HUGO_BINARY}
-GOLANGCILINT_VERSION="1.52.2"
-curl --silent --show-error --location --output /tmp/golangci-lint.deb \
-     "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCILINT_VERSION}/golangci-lint-${GOLANGCILINT_VERSION}-linux-amd64.deb"
+
+
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.1
+mv golangci-lint-*/golangci-lint /usr/local/bin/
+sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
+
 sudo dpkg -i /tmp/golangci-lint.deb
 rm -f /tmp/golangci-lint.deb
 sudo npm install --global \
