@@ -1,6 +1,6 @@
 #!/bin/bash
 # Install make, wget and curl
-sudo apt-get update && apt-get install -y make wget curl
+sudo apt-get update && sudo apt-get install -y make wget curl
 
 # Download Hugo binary
 HUGO_VERSION="0.84.0"
@@ -25,5 +25,6 @@ curl --silent --show-error --location --output /tmp/golangci-lint.deb \
 
 rm -f /tmp/golangci-lint.deb
 # Install markdownlint-cli and markdown-link-check
-sudo npm install -g markdownlint-cli
-sudo npm install -g markdown-link-check
+sudo npm install --global \
+  markdownlint-cli@0.26.0 \
+  markdown-link-check@3.8.6
