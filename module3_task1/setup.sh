@@ -1,6 +1,6 @@
 #!/bin/bash
-# Install make and wget
-sudo apt-get update && apt-get install -y make wget
+# Install make, wget and curl
+sudo apt-get update && apt-get install -y make wget curl
 
 # Install v0.84.0 of Hugo
 wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz
@@ -17,12 +17,9 @@ source ~/.profile
 sudo apt-get install -y nodejs=14.21.3-deb-1nodesource1
 sudo npm install -g npm@7
 
-# Install curl
-sudo apt-get install curl
-
-# Install binaries golangci-lint
-sudo curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
-sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
+GOLANGCILINT_VERSION="1.52.2"
+curl --silent --show-error --location --output /tmp/golangci-lint.deb \
+     "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCILINT_VERSION}/golangci-lint-${GOLANGCILINT_VERSION}-linux-amd64.deb"
 
 # Install markdownlint-cli and 
 sudo npm install -g markdownlint-cli
