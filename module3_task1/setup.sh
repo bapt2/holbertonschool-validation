@@ -2,10 +2,12 @@
 # Install make, wget and curl
 sudo apt-get update && apt-get install -y make wget curl
 
-# Install v0.84.0 of Hugo
-wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz
-sudo tar -zxvf hugo_extended_0.84.0_Linux-64bit.tar.gz
-mv hugo /usr/local/bin
+# Download Hugo binary
+HUGO_VERSION="0.84.0"
+HUGO_BINARY="hugo_extended_${HUGO_VERSION}_Linux-64bit.deb"
+curl -LO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}"
+sudo dpkg -i ${HUGO_BINARY}
+rm ${HUGO_BINARY}
 
 # Install Golang v1.15.14
 wget https://golang.org/dl/go1.15.14.linux-amd64.tar.gz
@@ -21,6 +23,6 @@ GOLANGCILINT_VERSION="1.52.2"
 curl --silent --show-error --location --output /tmp/golangci-lint.deb \
      "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCILINT_VERSION}/golangci-lint-${GOLANGCILINT_VERSION}-linux-amd64.deb"
 
-# Install markdownlint-cli and 
+# Install markdownlint-cli and markdown-link-check
 sudo npm install -g markdownlint-cli
 sudo npm install -g markdown-link-check
