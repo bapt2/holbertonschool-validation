@@ -7,17 +7,15 @@ wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.
 sudo tar -zxvf hugo_extended_0.84.0_Linux-64bit.tar.gz
 mv hugo /usr/local/bin
 
-# Install Golang v1.15.14
-wget https://golang.org/dl/go1.15.14.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.15.14.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-source ~/.profile
+# Install golangci-lint
+curl --silent --show-error --location --output /tmp/golangci-lint.deb \
+     "https://github.com/golangci/golangci-lint/releases/download/v1.52.2/golangci-lint-1.52.2-linux-amd64.deb"
+sudo dpkg -i /tmp/golangci-lint.deb
+rm -f /tmp/golangci-lint.deb
 
-
-# Install binaries golangci-lint
-sudo curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.1
-sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
-
+# Install nodejs v14.* and npm v7*
+sudo apt-get install -y nodejs=14.21.3-deb-1nodesource1
+sudo npm install -g npm@7
 
 # Install markdownlint-cli and markdown-link-check
 sudo npm install -g markdownlint-cli
