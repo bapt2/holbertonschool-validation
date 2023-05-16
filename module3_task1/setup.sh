@@ -17,6 +17,9 @@ source ~/.profile
 sudo apt-get install -y nodejs=14.21.3-deb-1nodesource1
 sudo npm install -g npm@7
 
+# Install curl
+sudo apt-get install curl
+
 # Install binaries golangci-lint
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s 
 sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
