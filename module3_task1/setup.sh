@@ -9,7 +9,6 @@ rm ${HUGO_BINARY}
 
 
 curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.1
-mv golangci-lint-*/golangci-lint /usr/local/bin/
 sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
 
 sudo dpkg -i /tmp/golangci-lint.deb
