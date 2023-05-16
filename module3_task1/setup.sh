@@ -15,7 +15,9 @@ source ~/.profile
 
 
 # Install binaries golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+sudo curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.1
+sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
+
 
 # Install markdownlint-cli and markdown-link-check
 sudo npm install -g markdownlint-cli
