@@ -13,9 +13,7 @@ jobs:
     steps:
       - name: "Checkout"  # Download code from the repository
         uses: actions/checkout@v3
-      
       - name: "Run bash script" # Execute file setup.sh
         run: cd module3_task1 && ./setup.sh
-      
       - name: "Run make build"  # Execute the command make build
         run: cd module3_task1 && make build
