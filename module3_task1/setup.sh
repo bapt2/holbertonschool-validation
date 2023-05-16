@@ -1,27 +1,16 @@
-docker run --rm --tty --interactive --volume=$(pwd):/app --workdir=/app ubuntu:18.04 /bin/bash
-apt-get update && apt-get install -y hugo make
-
-apt-get install wget
-
-wget https://github.com/gohugoio/hugo/releases/download/v0.84.0/hugo_extended_0.84.0_Linux-64bit.tar.gz
-sudo tar -zxvf hugo_extended_0.84.0_Linux-64bit.tar.gz
-mv hugo /usr/local/bin
-
-curl -O https://dl.google.com/go/go1.15.14.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.15.14.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-source ~/.profile
-
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.42.1
-sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
-
-sudo -g npm@7
-
-curl -LO https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
-sudo tar -xvf node-v14.17.0-linux-x64.tar.xz -C /usr/local --strip-components=1
-export PATH=$PATH:/usr/local/node/bin
-source ~/.profile
-
-pip install --user yamllint
-
-make build
+#!/bin/bash
+sudo apt-get update && sudo apt-get install -y make curl
+# Download Hugo binary
+HUGO_VERSION="0.84.0"
+HUGO_BINARY="hugo_extended_${HUGO_VERSION}_Linux-64bit.deb"
+curl -LO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}"
+sudo dpkg -i ${HUGO_BINARY}
+rm ${HUGO_BINARY}
+GOLANGCILINT_VERSION="1.52.2"
+curl --silent --show-error --location --output /tmp/golangci-lint.deb \
+     "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCILINT_VERSION}/golangci-lint-${GOLANGCILINT_VERSION}-linux-amd64.deb"
+sudo dpkg -i /tmp/golangci-lint.deb
+rm -f /tmp/golangci-lint.deb
+sudo npm install --global \
+  markdownlint-cli@0.26.0 \
+  markdown-link-check@3.8.6
