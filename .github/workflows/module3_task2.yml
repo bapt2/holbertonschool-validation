@@ -22,13 +22,13 @@ jobs:
 
       - name: "Run make package" # Execute the command make package
         run: |
-        cd module3_task2
-        make test
-        make package
-        make clean
+          cd module3_task2
+          make test
+          make package
+          make clean
 
       - name: "Archive a zip file"
-        run: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: awesome-website.zip
           path: module3_task2/awesome-website.zip
