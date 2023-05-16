@@ -23,6 +23,7 @@ GOLANGCILINT_VERSION="1.52.2"
 curl --silent --show-error --location --output /tmp/golangci-lint.deb \
      "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCILINT_VERSION}/golangci-lint-${GOLANGCILINT_VERSION}-linux-amd64.deb"
 
+rm -f /tmp/golangci-lint.deb
 # Install markdownlint-cli and markdown-link-check
 sudo npm install -g markdownlint-cli
 sudo npm install -g markdown-link-check
