@@ -13,12 +13,10 @@ sudo tar -C /usr/local -xzf go1.15.14.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 source ~/.profile
 
-GOLANGCILINT_VERSION="1.52.2"
-curl --silent --show-error --location --output /tmp/golangci-lint.deb \
-     "https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCILINT_VERSION}/golangci-lint-${GOLANGCILINT_VERSION}-linux-amd64.deb"
 
-sudo dpkg -i /tmp/golangci-lint.deb
-rm -f /tmp/golangci-lint.deb
+# Install binaries golangci-lint
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+
 # Install markdownlint-cli and markdown-link-check
 sudo npm install -g markdownlint-cli
 sudo npm install -g markdown-link-check
