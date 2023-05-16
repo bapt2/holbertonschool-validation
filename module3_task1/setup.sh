@@ -21,7 +21,7 @@ sudo npm install -g npm@7
 sudo apt-get install curl
 
 # Install binaries golangci-lint
-sudo curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s 
+sudo curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
 sudo mv golangci-lint-*/golangci-lint /usr/local/bin/
 
 # Install markdownlint-cli and 
