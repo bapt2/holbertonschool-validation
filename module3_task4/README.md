@@ -26,8 +26,6 @@
 
 - help: Display help message.
 
-## Workflow
--  The original workflow file <...>/.github/workflows/module3_task0.yml must be:
-   -  Present with a valid YAML syntax
-   -  It must be a valid GitHub action workflow with 1 job and 1 steps
-   -  It must be have 2 triggers
+- workflow: are defined by a YAML file checked in to your repository and will
+  run when triggered by an event in your repository, or they can be triggered
+  manually, or at a defined schedule.

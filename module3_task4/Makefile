@@ -41,7 +41,7 @@ lint:	## Lint go lang code
 	golangci-lint run
 	markdownlint DEPLOY.md
 
-check:	## Lint markdown source, check dead links
+check:	## Lint markdonw source, check dead links
 	markdownlint content/**/*.md
 	find content -name \*.md -print0 | xargs -0 -n1 markdown-link-check
 
