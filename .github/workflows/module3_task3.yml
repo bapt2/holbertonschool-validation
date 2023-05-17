@@ -28,7 +28,7 @@ jobs:
           make test
           make package
           make clean
-      
+
       - name: "Release"
         env:
           TOKEN: ${{ secrets.TOKEN }}
