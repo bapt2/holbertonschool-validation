@@ -1,18 +1,24 @@
-# What is in the archive and how to unarchive it?
+# DEPLOYMENT
 
-* The archive contains the latest build and the api binary. The archive can be
+## What is in the archive and how to unarchive it
+
+The archive contains the latest build and the api binary. The archive can be
 found under either in uploads or releases if a tags is used v1.0.0
 
-* add the archive awesome-website.zip to the release 1.0.0
+### To unarchive the package
 
-## What are the commands to start and stop the application?
+Run the command:
+`unzip awesome-website.zip`
 
-* use: hugo server
+## What are the commands to start and stop the application
 
-## How to customize where the application logs are written?
+To run the application use:
+`hugo server`
 
-* to be determined
+## How to customise where the logs are written
 
-## How to “quickly” verify that the application is running (healthcheck)?
+to be determined
 
-* use: <http://localhost:1313>
+## How to quickly check the application is running
+
+Use the url in modern browser: <http://localhost:1313>
