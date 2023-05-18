@@ -13,10 +13,13 @@ sudo dpkg -i /tmp/golangci-lint.deb
 rm -f /tmp/golangci-lint.deb
 
 # Install nodejs v14.* and npm v7*
-sudo apt-get install -y nodejs=14.21.3-deb-1nodesource1
-sudo apt install npm@7
+curl -LO https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
+sudo tar -xvf node-v14.17.0-linux-x64.tar.xz -C /usr/local --strip-components=1
+export PATH=$PATH:/usr/local/node/bin
+source ~/.bashrc
+sudo npm install -g npm@7
 
 # Install markdownlint-cli and 
-sudo npm install markdownlint-cli
-sudo npm install markdown-link-check
+sudo npm install -g markdownlint-cli
+sudo npm install -g markdown-link-check
   
