@@ -15,8 +15,6 @@ rm -f /tmp/golangci-lint.deb
 # Install nodejs v14.* and npm v7*
 curl -LO https://nodejs.org/dist/v14.17.0/node-v14.17.0-linux-x64.tar.xz
 sudo tar -xvf node-v14.17.0-linux-x64.tar.xz -C /usr/local --strip-components=1
-export PATH=$PATH:/usr/local/node/bin
-source ~/.bashrc
 sudo npm install -g npm@7
 
 # Install markdownlint-cli and 
