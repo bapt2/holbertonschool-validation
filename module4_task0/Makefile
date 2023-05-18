@@ -7,8 +7,8 @@ HUGO=hugo
 
 build:	## Generate the source code of the application to a binary.
 	$(MAKE) lint
-	docker run -it golang:1.15.8-buster $(GO) mod tidy
-	docker run -it golang:1.15.8-buster $(GO) build -o $(TARGET)
+	docker run golang:1.15.8-buster $(GO) mod tidy
+	docker run golang:1.15.8-buster $(GO) build -o $(TARGET)
 	$(MAKE) check && $(HUGO) build -o $(TARGET)
 
 run:	## Run the application in background by executing the binary.
@@ -33,10 +33,10 @@ test:	## Test the application.
 	$(MAKE) validate
 
 unit-tests: ## Run unit tests
-	docker run -it golang:1.15.8-buster go test -v -short -coverprofile=$(COVERAGE)-units.out
+	docker run golang:1.15.8-buster go test -v -short -coverprofile=$(COVERAGE)-units.out
 
 integration-tests: ## Run integration tests
-	docker run -it golang:1.15.8-buster go test -v -coverprofile=$(COVERAGE)-integrations.out
+	docker run golang:1.15.8-buster go test -v -coverprofile=$(COVERAGE)-integrations.out
 
 lint:	## Lint go lang code
 	golangci-lint run
