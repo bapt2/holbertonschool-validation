@@ -18,6 +18,6 @@ apt-get install -y nodejs
 npm install -g npm@7
 
 # Install markdownlint-cli and 
-npm install -g markdownlint-cli
-npm install -g markdown-link-check
-  
+npm install --global \
+  markdownlint-cli \ 
+  markdown-link-check
