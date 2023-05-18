@@ -4,12 +4,16 @@ RM=rm -rf
 MAKE=make
 COVERAGE=coverage
 HUGO=hugo
+DOCKER_OPTIONS=--rm --tty --volume=`pwd`:/app --workdir=/app
+DOCKER=docker run $(DOCKER_OPTIONS)
+DOCKER_IMAGE=golang:1.15.8-buster
 
 build:	## Generate the source code of the application to a binary.
-	$(MAKE) lint
-	docker run golang:1.15.8-buster $(GO) mod tidy
-	docker run golang:1.15.8-buster $(GO) build -o $(TARGET)
-	$(MAKE) check && $(HUGO) build -o $(TARGET)
+	$(DOCKER) $(DOCKER_IMAGE) sh -c "./setup.sh $(MAKE) lint \
+	&& $(GO) mod tidy \
+	&& $(MAKE) check \
+	&& $(HUGO) \
+	&& $(GO) build -o $(TARGET)"
 
 run:	## Run the application in background by executing the binary.
 	./$(TARGET) >./$(TARGET).log 2>&1 &
@@ -28,15 +32,16 @@ clean:	## Stop the application. Delete the binary and the log file.
 	@$(RM) $(TARGET) $(TARGET).log $(COVERAGE)-units.out $(COVERAGE)-integrations.out dist/ *~
 
 test:	## Test the application.
-	$(MAKE) unit-tests
-	$(MAKE) integration-tests
-	$(MAKE) validate
+	$(DOCKER) $(DOCKER_IMAGE) sh -c "./setup.sh $(MAKE) unit-tests \
+	&& $(MAKE) integration-tests \
+	&& $(MAKE) validate"
+
 
 unit-tests: ## Run unit tests
-	docker run golang:1.15.8-buster go test -v -short -coverprofile=$(COVERAGE)-units.out
+	go test -v -short -coverprofile=$(COVERAGE)-units.out
 
 integration-tests: ## Run integration tests
-	docker run golang:1.15.8-buster go test -v -coverprofile=$(COVERAGE)-integrations.out
+	go test -v -coverprofile=$(COVERAGE)-integrations.out
 
 lint:	## Lint go lang code
 	golangci-lint run
